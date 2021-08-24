@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const favicon = require('serve-favicon')
 
+const db = require('./app-api/db');
 const indexRouter = require('./app-server/routes/index');
 
 const app = express();

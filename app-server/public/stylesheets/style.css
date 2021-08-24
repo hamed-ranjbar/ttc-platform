@@ -3,6 +3,16 @@ body, html {
   margin: 0;
 }
 
+p, a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  animation: cubic-bezier(0, 0, 1, 1);
+  text-transform: uppercase;
+}
+
 .bgimg {
   background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
   height: 100%;
