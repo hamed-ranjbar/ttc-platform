@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const favicon = require('serve-favicon')
+require('dotenv').config();
 
 const db = require('./app-api/db');
 const indexRouter = require('./app-server/routes/index');
