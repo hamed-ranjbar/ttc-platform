@@ -10,14 +10,25 @@ mongoose.connect(dbServer, {
 const db = mongoose.connection;
 process.on('error', console.error.bind(console, 'connection error:'));
 
-process.once('SIGUSR2', () => {
-  gracefulShutdown('nodemon restart', () => {
-    process.kill(process.pid, 'SIGUSR2');
-  });
+mongoose.connection.on('disconnected', () => {
+  console.log('Mongoose disconnected');
 });
 
 db.once('open', function () {
   console.log("connected to DB successfully");
+});
+
+const gracefulShutdown = (msg, callback) => {
+  mongoose.connection.close(() => {
+    console.log(`Mongoose disconnected through ${msg}`);
+    callback();
+  });
+};
+
+process.once('SIGUSR2', () => {
+  gracefulShutdown('nodemon restart', () => {
+    process.kill(process.pid, 'SIGUSR2');
+  });
 });
 
 process.on('SIGINT', () => {
@@ -32,9 +43,4 @@ process.on('SIGTERM', () => {
   });
 });
 
-const gracefulShutdown = (msg, callback) => {
-  mongoose.connection.close(() => {
-    console.log(`Mongoose disconnected through ${msg}`);
-    callback();
-  });
-};
+require('./users');
