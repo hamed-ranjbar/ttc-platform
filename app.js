@@ -19,8 +19,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'app-server', 'public')));
-app.use(favicon(path.join(__dirname,'app-server','public','images','favicon.png')))
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname,'public','images','favicon.png')))
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);

@@ -1,11 +1,29 @@
 extends layout
 
+include _includes/sharedHTMLfunctions
+
 block content
-  div.bgimg
-    .topright 
-      p
-        a(href="/login") Login
-    .middle 
-      h1= title
-      hr
-      p(id="demo")
+  row.banner
+    .col-12
+      h1= pageHeader.title
+        small &nbsp;#{pageHeader.strapLine}
+
+  .row
+    .col-12
+      .row
+        each course in courses
+          .col-12.col-md-6
+            .card(style=course.bgImage)
+              .card-block(style="background-color:rgba(255, 255, 255, 0.5);")
+                h4
+                  a(href='/course')= course.name
+                  +outputRating(course.rating)
+                  span.badge.badge-pill.badge-default.float-right= course.distance
+                p.description= course.description
+                .facilities
+                  //- each facility in course.facilities
+                  //-   span.badge.badge-warning= facility
+
+
+    .col-12.col-md-4
+      p.lead= sidebar
