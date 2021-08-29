@@ -3,19 +3,18 @@ html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', hrparsingef='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/all.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     nav.navbar.fixed-top.navbar-expand-md.navbar-light
-      .container
-        a.navbar-brand(href='/') TTC
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarMain')
-          span.navbar-toggler-icon
-        #navbarMain.navbar-collapse.collapse
-          ul.navbar-nav.mr-auto
-            li.nav-item
-              a.nav-link(href='/about/') About
+      img.navbar-brand(src='http://ttc.moghadam.pro/wp-content/uploads/2019/04/ttc-logo.png')
+      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      #navbarTogglerDemo02.navbar-collapse.collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/about/') About
     .container.content
       block content
       

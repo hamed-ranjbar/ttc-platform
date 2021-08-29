@@ -8,13 +8,13 @@ const get_home = (req, res, next) => {
                 name: 'GTTP',
                 rating: 4,
                 description: 'General Teacher Training Program',
-                bgImage: 'background-image: url(/images/GTTP.jpg)'
+                bgImage: '/images/GTTP.jpg'
             },
             {
                 name: 'YLTTP',
                 rating: 5,
                 description: 'Young Learners Teacher Training Program',
-                bgImage: 'background-image: url(/images/YLTTP.jpeg)'
+                bgImage: '/images/YLTTP.jpeg'
             }
         ]
     });
