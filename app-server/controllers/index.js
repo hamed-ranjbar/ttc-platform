@@ -5,13 +5,13 @@ const get_home = (req, res, next) => {
         },
         sidebar: 'choose the program that suits you!',
         courses: [{
-                name: 'GTTP',
+                name: 'General Teacher Training Program',
                 rating: 4,
                 description: 'General Teacher Training Program',
                 bgImage: '/images/GTTP.jpg'
             },
             {
-                name: 'YLTTP',
+                name: 'Young Learners Teacher Training Program',
                 rating: 5,
                 description: 'Young Learners Teacher Training Program',
                 bgImage: '/images/YLTTP.jpeg'
