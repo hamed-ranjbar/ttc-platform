@@ -9,21 +9,19 @@ block content
         small &nbsp;#{pageHeader.strapLine}
 
   .row
-    .col-12
-      .row
-        each course in courses
-          .col-12.col-md-4
-            .card
-              .card-block
-                img(src=course.bgImage style='width:100%')
-                h4
-                  a(href='/course')= course.name
-                  +outputRating(course.rating)
-                  span.badge.badge-pill.badge-default.float-right= course.distance
-                p.description= course.description
-                .facilities
-                  //- each facility in course.facilities
-                  //-   span.badge.badge-warning= facility
+    each course in courses
+      .col-12.col-md-4
+        .card
+          .card-block
+            //- img(src=course.bgImage style='width:inherit')
+            h4
+              a(href='/course')= course.name
+              +outputRating(course.rating)
+              span.badge.badge-pill.badge-default.float-right= course.distance
+            p.description= course.description
+            //- .facilities
+              //- each facility in course.facilities
+              //-   span.badge.badge-warning= facility
 
 
     .col-12.col-md-4
