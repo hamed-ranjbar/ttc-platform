@@ -1,3 +1,5 @@
+const request = require('request')
+
 const get_home = (req, res, next) => {
     res.render('index', {
         pageHeader: {

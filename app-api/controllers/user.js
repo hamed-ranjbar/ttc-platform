@@ -32,15 +32,15 @@ const userCreate = (req, res) => {
         sex: req.body.sex,
         password: req.body.password
     }
-    Usr.create(user, (err, response) => {
+    Usr.create(user, (err, userCreated) => {
         if (err) {
             res
                 .status(500)
                 .json(err.message);
         } else {
             res
-                .status(200)
-                .json(response);
+                .status(201)
+                .json(userCreated);
         }
     })
 }
@@ -51,8 +51,14 @@ const userReadOne = (req, res) => {
         .exec((err, user) => {
             if (err) {
                 res
+                    .status(500)
+                    .json(err);
+            } else if (!user) {
+                res
                     .status(404)
-                    .json(err)
+                    .json({
+                        message: 'user not found'
+                    });
             } else {
                 res
                     .status(200)
@@ -67,15 +73,32 @@ const userUpdateOne = (req, res) => {
         .exec((err, user) => {
             if (err) {
                 res
-                    .status(404)
+                    .status(500)
                     .json(err);
+            } else if (!user) {
+                res
+                    .status(404)
+                    .json({
+                        message: 'user not found!'
+                    });
             } else {
                 user.name = {
                     firstName: req.body.firstName,
                     lastName: req.body.lastName
                 };
-                user.password= req.body.password;
+                user.password = req.body.password;
                 user.sex = req.body.sex;
+                user.save((err, useredited) => {
+                    if (err) {
+                        res
+                            .status(500)
+                            .json(err);
+                    } else {
+                        res
+                            .status(200)
+                            .json(useredited);
+                    }
+                })
             }
         });
 }
@@ -88,7 +111,7 @@ const userDeleteOne = (req, res) => {
                 .json(err)
         } else {
             res
-                .status(200)
+                .status(204)
                 .json(user)
         }
     })
