@@ -7,14 +7,15 @@ html
     link(rel='stylesheet', href='/stylesheets/all.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    nav.navbar.fixed-top.navbar-expand-md.navbar-light.bg-inverse
-      img.navbar-brand(src='http://ttc.moghadam.pro/wp-content/uploads/2019/04/ttc-logo.png')
-      button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarToggler")
-        span.navbar-toggler-icon
-      #navbarToggler.navbar-collapse.collapse
-        ul.navbar-nav.mr-auto
-          li.nav-item
-            a.nav-link(href='/about/') About
+    nav.navbar.fixed-top.navbar-expand-md.navbar-light.bg-light
+      .container
+        img.navbar-brand(src='/images/ttc-logo.png', style='height: 50px')
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarToggler" aria-expanded="false")
+          i.fas.fa-bars(style="color:#000; font-size:28px;")
+        #navbarToggler.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a.nav-link(href='/about/') About
     .container.content
       block content
       
