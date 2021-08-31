@@ -9,18 +9,18 @@ block content
         small &nbsp;#{pageHeader.strapLine}
 
   .row
-    each course in courses
+    each program in programs
       .col-12.col-md-4
         .card
           .card-block
-            img(src=course.bgImage style='width:100%')
-            h4
-              a(href='/course')= course.name
-              +outputRating(course.rating)
-              span.badge.badge-pill.badge-default.float-right= course.distance
-            p.description= course.description
-            a.btn.btn-outline-info(type="button" href="/course") read more 
-
+            img(src=program.bgImage style='width:100%')
+            h4= program.name
+              +outputRating(program.rating)
+              span.badge.badge-pill.badge-default.float-right= program.distance
+            p.description= program.description
+            a.btn.btn-outline-info(type="button" href=program._id) read more
+    else
+      p err
 
     .col-12
       p.lead= sidebar

@@ -21,6 +21,7 @@ const programSchema = new mongoose.Schema({
         max: 5
     },
     vidURL: String,
+    bgImage:String,
     courses: [courseSchema]
 })
 

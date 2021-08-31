@@ -4,6 +4,7 @@ const Prog = mongoose.model('program')
 const programList = (req, res) => {
     Prog
         .find()
+        .select('-courses -__v')
         .exec((err, program) => {
             if (err) {
                 res
@@ -27,7 +28,8 @@ const programCreateOne = (req, res) => {
     let program = {
         name:req.body.name,
         description:req.body.description,
-        vidURL:req.body.vidURL
+        vidURL:req.body.vidURL,
+        bgImage:req.body.bgImage
     }
     Prog
         .create(program,(err,pro)=>{
@@ -79,6 +81,7 @@ const programUpdateOne = (req,res) => {
                 program.name = req.body.name;
                 program.description = req.body.description;
                 program.vidURL = req.body.vidURL;
+                program.bgImage = req.body.bgImage;
                 program.save((err,programEdited) => {
                     if(err){
                         res

@@ -1,27 +1,33 @@
 const request = require('request')
 
-const get_home = (req, res, next) => {
-    res.render('index', {
+const apiOptions = {
+    server: 'http://localhost:3000'
+};
+if (process.env.NODE_ENV === 'production') {
+    apiOptions.server = 'https://pure-temple-67771.herokuapp.com';
+}
+
+const get_home = (req, res) => {
+    const path = '/api/programs';
+    const requestOptions = {
+        url:`${apiOptions.server}${path}`,
+        method:'GET',
+        json:{},
+        qs:{}
+    };
+    request(requestOptions, (err,response,body) => {
+        renderHomePage(req,res,body);
+    })
+}
+const renderHomePage = (req,res,responseBody) => {
+    res.render('index',{
         pageHeader: {
             title: 'Mooc-platform'
         },
         sidebar: 'choose the program that suits you!',
-        courses: [{
-                name: 'General Teacher Training Program',
-                rating: 4,
-                description: 'General Teacher Training Program',
-                bgImage: '/images/GTTP.jpg'
-            },
-            {
-                name: 'Young Learners Teacher Training Program',
-                rating: 5,
-                description: 'Young Learners Teacher Training Program',
-                bgImage: '/images/YLTTP.jpeg'
-            }
-        ]
+        programs: responseBody
     });
 }
-
 module.exports = {
     get_home
 }
