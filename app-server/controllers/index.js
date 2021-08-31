@@ -4,7 +4,7 @@ const apiOptions = {
     server: 'http://localhost:3000'
 };
 if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://pure-temple-67771.herokuapp.com';
+    apiOptions.server = 'https://ttc-moghadam.herokuapp.com';
 }
 
 const get_home = (req, res) => {
