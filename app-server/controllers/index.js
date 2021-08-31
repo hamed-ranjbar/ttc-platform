@@ -12,11 +12,11 @@ const get_home = (req, res) => {
     const requestOptions = {
         url:`${apiOptions.server}${path}`,
         method:'GET',
-        json:'',
+        json:{},
         qs:{}
     };
     request(requestOptions, (err,response,body) => {
-        renderHomePage(req,res,JSON.parse(body));
+        renderHomePage(req,res,body);
     })
 }
 const renderHomePage = (req,res,responseBody) => {
