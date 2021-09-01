@@ -1,19 +1,12 @@
-@import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Lobster', cursive;
+body {
+  font-family: OpenSans,Arial,sans-serif;
 }
 
 .navbar {
   background-color: white;
-  border-bottom-width: 1px !important;
-  border-bottom-color: #e5e5e5 !important;
-  border-bottom-style: solid !important;
+  border-width: 1px !important;
+  border-color: #e5e5e5 !important;
+  border-style: solid !important;
 }
 
 .card {

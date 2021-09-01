@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const index = require('../controllers/index')
+const ctrlProgram = require('../controllers/programList')
 
 /* GET home page. */
-router.get('/', index.get_home);
+router.get('/', ctrlProgram.programList);
+router.get('/:programid', ctrlProgram.programInfo);
 
 module.exports = router;
