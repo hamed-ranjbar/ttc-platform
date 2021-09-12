@@ -1,28 +1,10 @@
 const mongoose = require("mongoose");
 
-const partSchema = new mongoose.Schema({
-    name: String,
-    description: String,
-})
-
-const courseSchema = new mongoose.Schema({
-    name: String,
-    description: String,
-    parts: [partSchema]
-})
-
 const programSchema = new mongoose.Schema({
-    name: String,
-    description: String,
-    rating: {
-        type: Number,
-        'default': 0,
-        min: 0,
-        max: 5
-    },
-    vidURL: String,
-    bgImage:String,
-    courses: [courseSchema]
+    name:String,
+    description:String,
+    active:Boolean,
+    lecturer_id:String,
+    institution_id:String
 })
-
 mongoose.model('program', programSchema);

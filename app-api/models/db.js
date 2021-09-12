@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbServer = (process.env.state == 'production') ? 'mongodb+srv://hmd_rnj_98:kalpase2000@ttc-cluster.lomgx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' : 'mongodb://localhost:27017/test';
+const dbServer = (process.env.state == 'production') ? `mongodb+srv://${process.env.db_username}:${process.env.db_password}@ttc-cluster.lomgx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority` : 'mongodb://localhost:27017/ttc-platform';
 
 console.log(`connecting to ${dbServer}`);
 mongoose.connect(dbServer, {

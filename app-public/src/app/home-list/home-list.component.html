@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-12 col-md-4" *ngFor="let program of programs">
+    <div class="card">
+      <div class="card-block">
+        <img src="../../assets/images/{{program.bgImage}}" style="width:100%">
+        <h4>
+          <b>{{program.name}}</b>
+          <app-rating-stars [rating]=program.rating></app-rating-stars>
+          <span class="badge badge-pill badge-default float-right"></span>
+        </h4>
+        <p class="description">{{program.description}}</p>
+        <a class="btn btn-outline-info" type="button" routerLink="/program/{{program._id}}">read more</a>
+      </div>
+    </div>
+  </div>
+</div>
