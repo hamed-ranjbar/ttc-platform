@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Prog = mongoose.model('program')
+const Prog = mongoose.model('Program');
 
 const programList = (req, res) => {
     Prog
