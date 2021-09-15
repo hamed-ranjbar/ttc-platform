@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const institutionSchema = new mongoose.Schema({
     name: String,
     description: String,
-    location: Geolocation,
+    coords:{
+        type: {type: String},
+        coordinates: [Number]
+    },
     image_link: String
 });
 

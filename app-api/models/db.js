@@ -45,3 +45,5 @@ process.on('SIGTERM', () => {
 
 require('./users');
 require('./Programs');
+require('./Institutions');
+require('./Instructors');

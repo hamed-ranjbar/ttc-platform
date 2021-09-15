@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
-const Prog = mongoose.model('Program');
+const TTC = mongoose.model('Program');
 
 const programList = (req, res) => {
-    Prog
+    TTC
         .find()
-        .select('-courses -__v')
+        .select('-courses')
         .exec((err, program) => {
             if (err) {
                 res
                     .status(500)
                     .json(err);
-            } else if (!program) {
+            } else if (!program.length) {
                 res
                     .status(404)
                     .json({
-                        message: 'no programs'
+                        message: 'no programs found!'
                     });
             } else {
                 res
@@ -31,7 +31,7 @@ const programCreateOne = (req, res) => {
         vidURL:req.body.vidURL,
         bgImage:req.body.bgImage
     }
-    Prog
+    TTC
         .create(program,(err,pro)=>{
             if (err){
                 res
@@ -46,7 +46,7 @@ const programCreateOne = (req, res) => {
 }
 
 const programReadOne = (req,res) => {
-    Prog
+    TTC
         .findById(req.params.programid)
         .exec((err,program)=>{
             if(err){
@@ -66,7 +66,7 @@ const programReadOne = (req,res) => {
 }
 
 const programUpdateOne = (req,res) => {
-    Prog
+    TTC
         .findById(req.params.programid)
         .exec((err,program)=>{
             if (err){
@@ -98,7 +98,7 @@ const programUpdateOne = (req,res) => {
 }
 
 const programDeleteOne = (req,res) => {
-    Prog
+    TTC
         .findByIdAndRemove(req.params.programid)
         .exec((err,program) => {
             if(err){

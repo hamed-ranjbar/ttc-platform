@@ -68,12 +68,12 @@ router
 
 // Institutions
 router
-    .route('institutions')
+    .route('/institutions')
     .get(ctrlInstitution.institutionList)
     .post(ctrlInstitution.institutionCreateOne);
 
 router
-    .route('institution/:institutionid')
+    .route('/institution/:institutionid')
     .get(ctrlInstitution.institutionReadOne)
     .put(ctrlInstitution.institutionUpdateOne)
     .delete(ctrlInstitution.institutionDeleteOne);

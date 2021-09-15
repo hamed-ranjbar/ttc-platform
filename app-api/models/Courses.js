@@ -4,18 +4,21 @@ const materialTypeSchema = new mongoose.Schema({
     type_name:String
 });
 const materialSchema = new mongoose.Schema({
-    material_no:Number,
-    MaterialType:materialTypeSchema,
-    material_link:String,
+    number:Number,
+    Type:materialTypeSchema,
+    link:String,
     mandatory:Boolean,
     max_point:Number
 });
 const courseSchema = new mongoose.Schema({
     name:String,
-    commitment:{},
+    commitment:Number,
     description:String,
     min_grade:Number,
-    active:Boolean,
+    active:{
+        type:Boolean,
+        'default': false
+    },
     materials:[materialSchema]
 });
 

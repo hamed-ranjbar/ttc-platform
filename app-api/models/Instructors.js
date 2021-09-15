@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 
 const instructorSchema = new mongoose.Schema({
     name: {
-        first_name: String,
-        last_name: String
+        firstName: String,
+        lastName: String
     },
+    description: String,
     title: String,
     institution_id: String,
     image_link: String
