@@ -37,12 +37,13 @@ const courseCreateOne = (req, res) => {
                 return res
                     .status(404)
                     .json({ message: 'Program not found!' });
-            const { name, description, min_grade, commitment } = req.body;
+            const { name, description, min_grade, commitment,number } = req.body;
             program.courses.push({
                 name,
                 description,
                 min_grade,
-                commitment
+                commitment,
+                number
             });
             program.save((err, result) => {
                 if (err)
@@ -118,6 +119,7 @@ const courseUpateOne = (req, res) => {
             course.description = req.body.description;
             course.min_grade = req.body.min_grade;
             course.active = req.body.active;
+            course.number = req.body.number;
             course.commitment = req.body.commitment;
             program.save((err) => {
                 if (err)
@@ -239,6 +241,7 @@ const materialCreateOne = (req, res) => {
                     .json({ message: 'Course not found!' });
             course.materials.push({
                 number: req.body.number,
+                name: req.body.name,
                 link: req.body.link,
                 mandatory: req.body.mandatory,
                 max_point: req.body.max_point
@@ -335,6 +338,7 @@ const materialUpdateOne = (req, res) => {
                     .status(404)
                     .json({ message: 'material not found!' });
             material.number = req.body.number;
+            material.name = req.body.name;
             material.max_point = req.body.max_point;
             material.link = req.body.link;
             material.mandatory = req.body.mandatory;

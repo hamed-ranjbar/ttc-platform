@@ -2,7 +2,7 @@
   <div class="col-12 col-md-4" *ngFor="let program of programs">
     <div class="card">
       <div class="card-block">
-        <img src="../../assets/images/{{program.bgImage}}" style="width:100%">
+        <img src="../../{{program.image_link}}" style="width:100%">
         <h4>
           <b>{{program.name}}</b>
           <app-rating-stars [rating]=program.rating></app-rating-stars>

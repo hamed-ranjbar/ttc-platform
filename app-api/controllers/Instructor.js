@@ -28,6 +28,7 @@ const instructorCreateOne = (req, res) => {
             },
             title: req.body.title,
             description: req.body.description,
+            image_link: req.body.image_link,
             institution_id: req.body.institution_id
         }, (err, instructor) => {
             if (err)

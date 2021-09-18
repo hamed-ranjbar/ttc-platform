@@ -23,7 +23,8 @@ const institutionCreateOne = (req, res) => {
     TTC
         .create({
             name: req.body.name,
-            description: req.body.discription,
+            description: req.body.description,
+            image_link: req.body.image_link,
             coords: {
                 type: 'Point',
                 coordinates: [

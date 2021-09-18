@@ -1,1 +1,57 @@
-<p>program-details works!</p>
+<div class="row">
+    <div class="container">
+        <img src="{{program.image_link}}" alt="{{program.name}} image" class="fit">
+        <div class="left whiteshadow rightangle">
+            <div class="row">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+            <a role="button" class="btn btn-warning" href="/program/programid/sign_up">sign up</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="content">
+        <mat-tab-group dynamicHeight color="accent">
+            <mat-tab label="course content">
+                <mat-vertical-stepper class="stepper" color="accent">
+                    <mat-step state="edit" [completed]="true" *ngFor="let course of program.courses"
+                        label="Course {{course.number}}: {{course.name}}">
+                        <mat-vertical-stepper color="accent">
+                            <mat-step state="edit" [completed]="true" *ngFor="let material of course.materials"
+                                label="Part{{material.number}}: {{material.name}}"></mat-step>
+
+                            <ng-template matStepperIcon="edit" let-index="index">
+                                {{index +1}}
+                            </ng-template>
+                        </mat-vertical-stepper>
+                    </mat-step>
+
+                    <ng-template matStepperIcon="edit" let-index="index">
+                        {{index +1}}
+                    </ng-template>
+                </mat-vertical-stepper>
+            </mat-tab>
+            <mat-tab label="Created by">
+                <div class="row">
+                    <div class="col-md-2 col-12">
+                        <img src="{{lecturer.image_link}}" alt="lecturer picture" class="fit">
+                    </div>
+                    <div class="col-md-10 col-12">
+                        <p>{{lecturer.description}}</p>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Hosted by">
+                <div class="row">
+                    <div class="col-md-2 col-12">
+                        <img src="{{institution.image_link}}" alt="lecturer picture" class="fit">
+                    </div>
+                    <div class="col-md-10 col-12" [innerHTML]="institution.description | htmlFormatter"></div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+<app-customers-review></app-customers-review>
+<app-pricing></app-pricing>

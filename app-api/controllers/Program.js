@@ -26,18 +26,20 @@ const programList = (req, res) => {
 
 const programCreateOne = (req, res) => {
     let program = {
-        name:req.body.name,
-        description:req.body.description,
-        vidURL:req.body.vidURL,
-        bgImage:req.body.bgImage
+        name: req.body.name,
+        description: req.body.description,
+        institution_id: req.body.institution_id,
+        lecturer_id: req.body.lecturer_id,
+        video_link: req.body.video_link,
+        image_link: req.body.image_link
     }
     TTC
-        .create(program,(err,pro)=>{
-            if (err){
+        .create(program, (err, pro) => {
+            if (err) {
                 res
                     .status(500)
                     .json(err);
-            }else{
+            } else {
                 res
                     .status(201)
                     .json(pro);
@@ -45,19 +47,19 @@ const programCreateOne = (req, res) => {
         })
 }
 
-const programReadOne = (req,res) => {
+const programReadOne = (req, res) => {
     TTC
         .findById(req.params.programid)
-        .exec((err,program)=>{
-            if(err){
+        .exec((err, program) => {
+            if (err) {
                 res
                     .status(500)
                     .json(err);
-            }else if(!program){
+            } else if (!program) {
                 res
                     .status(404)
                     .json(err);
-            }else{
+            } else {
                 res
                     .status(200)
                     .json(program);
@@ -65,25 +67,27 @@ const programReadOne = (req,res) => {
         });
 }
 
-const programUpdateOne = (req,res) => {
+const programUpdateOne = (req, res) => {
     TTC
         .findById(req.params.programid)
-        .exec((err,program)=>{
-            if (err){
+        .exec((err, program) => {
+            if (err) {
                 res
                     .status(500)
                     .json(err);
-            }else if(!program){
+            } else if (!program) {
                 res
                     .status(404)
-                    .json({message:'program not found!'})
-            }else{
+                    .json({ message: 'program not found!' })
+            } else {
                 program.name = req.body.name;
                 program.description = req.body.description;
-                program.vidURL = req.body.vidURL;
-                program.bgImage = req.body.bgImage;
-                program.save((err,programEdited) => {
-                    if(err){
+                program.institution_id = req.body.institution_id;
+                program.lecturer_id = req.body.lecturer_id;
+                program.video_link = req.body.video_link;
+                program.image_link = req.body.image_link;
+                program.save((err, programEdited) => {
+                    if (err) {
                         res
                             .status(500)
                             .json(err);
@@ -97,15 +101,15 @@ const programUpdateOne = (req,res) => {
         })
 }
 
-const programDeleteOne = (req,res) => {
+const programDeleteOne = (req, res) => {
     TTC
         .findByIdAndRemove(req.params.programid)
-        .exec((err,program) => {
-            if(err){
+        .exec((err, program) => {
+            if (err) {
                 res
                     .status(404)
                     .json(err)
-            }else{
+            } else {
                 res
                     .status(204)
                     .json(null)

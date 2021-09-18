@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators'
 
 import { MoocDataService } from '../mooc-data.service';
-import { Program } from '../home-list/home-list.component';
+import { Program } from '../program';
 
 @Component({
   selector: 'app-program-detail-page',
@@ -24,16 +24,15 @@ export class ProgramDetailPageComponent implements OnInit {
       strapline: ''
     }
   }
-
   ngOnInit(): void {
     this.route.paramMap
       .pipe(
-        switchMap((params:ParamMap) => {
+        switchMap((params: ParamMap) => {
           let id = params.get('programid')!.toString();
           return this.moocDataService.getProgramById(id);
         })
-      ).subscribe((newProgram:Program) => {
-        this.pageContent.header.title = newProgram.name
+      ).subscribe((newProgram: Program) => {
+        this.pageContent.header.title = newProgram.name;
       })
   }
 

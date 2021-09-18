@@ -1,27 +1,27 @@
 const mongoose = require('mongoose');
 
-const materialTypeSchema = new mongoose.Schema({
-    type_name:String
-});
 const materialSchema = new mongoose.Schema({
-    number:Number,
-    Type:materialTypeSchema,
-    link:String,
-    mandatory:Boolean,
-    max_point:Number
+    name:String,
+    number: Number,
+    Type: String,
+    link: String,
+    mandatory: Boolean,
+    max_point: Number
 });
 const courseSchema = new mongoose.Schema({
-    name:String,
-    commitment:Number,
-    description:String,
-    min_grade:Number,
-    active:{
-        type:Boolean,
+    name: String,
+    commitment: Number,
+    description: String,
+    min_grade: Number,
+    number: Number,
+    active: {
+        type: Boolean,
         'default': false
     },
-    materials:[materialSchema]
+    materials: [materialSchema]
 });
 
+courseSchema.index({ number: 1 })
 module.exports = {
     courseSchema
 }

@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MoocDataService } from '../mooc-data.service';
-
-export class Program {
-  _id!: string;
-  name!: string;
-  description!: string;
-  rating!: number;
-  bgImage!: string;
-}
+import { Program } from '../program';
 
 @Component({
   selector: 'app-home-list',
