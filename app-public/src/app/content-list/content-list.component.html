@@ -1,0 +1,17 @@
+<mat-vertical-stepper class="stepper" color="accent">
+    <mat-step state="edit" [completed]="true" *ngFor="let course of program.courses"
+        label="Course {{course.number}}: {{course.name}}">
+        <mat-vertical-stepper color="accent">
+            <mat-step state="edit" [completed]="true" *ngFor="let material of course.materials"
+                label="Part{{material.number}}: {{material.name}}"></mat-step>
+
+            <ng-template matStepperIcon="edit" let-index="index">
+                {{index +1}}
+            </ng-template>
+        </mat-vertical-stepper>
+    </mat-step>
+
+    <ng-template matStepperIcon="edit" let-index="index">
+        {{index +1}}
+    </ng-template>
+</mat-vertical-stepper>

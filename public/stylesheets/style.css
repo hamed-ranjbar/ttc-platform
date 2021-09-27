@@ -65,7 +65,7 @@ p {
 }
 
 a {
-  color: rgba(0, 0, 0, 0.8)
+  color: rgba(0, 0, 0, 0.8);
 }
 
 a:hover {
@@ -105,4 +105,39 @@ a:hover {
 hr {
   margin: auto;
   width: 40%;
+}
+
+.fit {
+  max-width: 100%;
+}
+
+.container {
+  position: relative;
+}
+
+.left {
+  position:   absolute;
+  top: 50%;
+  left:20px;
+}
+
+.whiteshadow {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.rightangle {
+
+  position: absolute;
+  -webkit-transform: skewX(-10deg);
+  -moz-transform: skewX(-10deg);
+  -ms-transform: skewX(-10deg);
+  transform: skewX(-10deg);
+}
+.mat-step-header .mat-step-icon {
+  background-color: #e5bf1c!;
+}
+
+.stepper .mat-step-label.mat-step-label{
+  text-overflow: ellipsis;
+  white-space: normal;
 }

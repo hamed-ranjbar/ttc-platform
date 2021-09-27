@@ -1,0 +1,26 @@
+<mat-drawer-container class="drop">
+    <mat-drawer #drawer class="sidenav" mode="over">
+        <button type="button" class="btn btn-outline-warning float-right" (click)="drawer.toggle()">
+            Close
+        </button>
+        <app-content-list [program]="program"></app-content-list>
+    </mat-drawer>
+    <div class="col-12">
+        <button class="btn btn-outline-warning float-left">Previous</button>
+        <button type="button" class="btn btn-outline-warning float-right" (click)="drawer.toggle()">
+            Show contents
+        </button>
+
+        <video controls width="100%">
+            <source src="http://localhost:3000/stream">
+        </video>
+
+        <div class="col-12">
+            <h1>course name</h1>
+            <p>
+                course text
+            </p>
+        </div>
+    </div>
+    <button class="btn btn-outline-warning float-right">Next</button>
+</mat-drawer-container>

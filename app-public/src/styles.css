@@ -2,8 +2,3 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.stepper .mat-step-label.mat-step-label{
-    text-overflow: ellipsis;
-    white-space: normal;
-}

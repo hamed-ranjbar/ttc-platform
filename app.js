@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const favicon = require('serve-favicon')
+
 require('dotenv').config();
 require('./app-api/models/db');
 
@@ -19,7 +20,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'app-public','src')));
+app.use(express.static(path.join(__dirname, 'app-public','build')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname,'public','images','favicon.ico')))
 
@@ -28,7 +29,10 @@ app.use('/api', (req,res,next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With,Content-Type, Accept');
   next();
 })
-app.use('/', indexRouter);
+
+app.use(/(\/about)|(\/proram\/[a-z0-9]{24})|(\/signup)/, (req,res,next) => {
+  res.sendFile(path.join(__dirname,'app-public','build','index.html'));
+});
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
