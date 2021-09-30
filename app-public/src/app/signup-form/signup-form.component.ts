@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { MustMatch } from '../_helpers/must-match.validator';
 
 @Component({
   selector: 'app-signup-form',
@@ -18,16 +19,9 @@ export class SignupFormComponent implements OnInit {
       Validators.required,
       Validators.email
     ]),
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [
+    password: new FormControl('', [
       Validators.required,
-      Validators.pattern('[0-9]*')]),
-    goal: new FormControl('',[Validators.required]),
-    birthday: new FormControl('',[Validators.required]),
-    nationality: new FormControl('',[Validators.required]),
-    course: new FormControl('',[Validators.required]),
-    workshop: new FormControl('',[Validators.required])
+      Validators.minLength(8)
+    ])
   })
-  selected: String = '';
 }

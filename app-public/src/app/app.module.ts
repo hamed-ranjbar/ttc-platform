@@ -34,8 +34,10 @@ import { CoursePageComponent } from './course-page/course-page.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { ContentListComponent } from './content-list/content-list.component';
 // modules
-import {AppRoutingModule} from './app-routing/app-routing.module';
-import { NotFoundComponent } from './not-found/not-found.component'
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { NotFoundComponent } from './not-found/not-found.component'
     CoursePageComponent,
     CourseDetailsComponent,
     ContentListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,146 @@
+<form action="/" method="POST" [formGroup]="signupGroupFormControl">
+    <h3>Contact Information:</h3>
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>first name</mat-label>
+                    <input required matInput placeholder="Jane" formControlName="firstName">
+                    <mat-error *ngIf="signupGroupFormControl.controls.firstName.hasError('required')">First Name is
+                        <b>REQUIRED</b>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>last name</mat-label>
+                    <input required matInput placeholder="Doe" formControlName="lastName">
+                    <mat-error *ngIf="signupGroupFormControl.controls.lastName.hasError('required')">Last name is
+                        <b>REQUIRED</b>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-6">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Birthday</mat-label>
+                    <input required matInput [matDatepicker]="picker" formControlName="birthday">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="signupGroupFormControl.controls.birthday.hasError('required')">when did you
+                        <b>BORN</b>?</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-6">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Nationality</mat-label>
+                    <input required matInput placeholder="Country/City" formControlName="nationality">
+                    <mat-error *ngIf="signupGroupFormControl.controls.nationality.hasError('required')">Your nationality
+                        is <b>IMPORTANT</b> to us!</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Email address</mat-label>
+                    <input required type="email" required matInput formControlName="email"
+                        placeholder="username@service.com">
+                    <mat-error
+                        *ngIf="signupGroupFormControl.controls.email.hasError('email') && !signupGroupFormControl.controls.email.hasError('required')">
+                        Please enter a valid email address!</mat-error>
+                    <mat-error *ngIf="signupGroupFormControl.controls.email.hasError('required')">Email is
+                        <b>REQUIRED</b>!
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <span matPrefix>+98 &nbsp;</span>
+                    <mat-label>Phone Number</mat-label>
+                    <input required type="tel" matInput placeholder="915-001-985" formControlName="phoneNumber">
+                    <mat-error
+                        *ngIf="signupGroupFormControl.controls.phoneNumber.hasError('pattern') && !signupGroupFormControl.controls.phoneNumber.hasError('required')">
+                        Please enter <b>Numbers</b>!</mat-error>
+                    <mat-error *ngIf="signupGroupFormControl.controls.phoneNumber.hasError('required')">Phone number is
+                        <b>REQUIRED</b>!
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Work related information:</h3>
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Field of study</mat-label>
+                    <input required matInput placeholder="Computer Engeeniering">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Job title</mat-label>
+                    <input required matInput placeholder="Programmer">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <h3>Training background:</h3>
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="row">
+
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Previous training</mat-label>
+                    <mat-select [(value)]="selected" multiple>
+                        <mat-option value="course">Course</mat-option>
+                        <mat-option value="workshop">Workshop</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent" *ngIf="selected.includes('course')">
+                    <mat-label>List previous training courses</mat-label>
+                    <input required matInput placeholder="Course-1, Course-2, ..." formControlName="course">
+                    <mat-error *ngIf="signupGroupFormControl.controls.course.hasError('required')">Courses list is <b>REQUIRED</b></mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent" *ngIf="selected.includes('workshop')">
+                    <mat-label>List previous training workshops</mat-label>
+                    <input required matInput placeholder="Workshop-1, Workshop-2, ..." formControlName="workshop">
+                    <mat-error *ngIf="signupGroupFormControl.controls.workshop.hasError('required')">Workshops list is <b>REQUIRED</b></mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Briefly explain why you would like to take part in this program</mat-label>
+            <textarea required matInput placeholder="My Goal is ..." formControlName="goal"></textarea>
+            <mat-error *ngIf="signupGroupFormControl.controls.goal.hasError('required')">we need to know your
+                <b>Goals</b>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <button type="submit" class="btn btn-outline-warning">Submit</button>
+</form>

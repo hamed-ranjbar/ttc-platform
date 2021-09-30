@@ -1,81 +1,81 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('express-jwt');
+const auth = jwt({
+    secret: process.env.JWT_SECRET,
+    userProperty: 'payload',
+    algorithms: ['RS256']
+});
 
-const ctrlUser = require('../controllers/User');
 const ctrlProgram = require('../controllers/Program');
 const ctrlCourse = require('../controllers/Course');
 const ctrlInstructor = require('../controllers/Instructor');
 const ctrlInstitution = require('../controllers/Institution');
-
-// User
-router
-    .route('/users')
-    .get(ctrlUser.userList)
-    .post(ctrlUser.userCreate);
-router
-    .route('/user/:userid')
-    .get(ctrlUser.userReadOne)
-    .put(ctrlUser.userUpdateOne)
-    .delete(ctrlUser.userDeleteOne);
+const ctrlAuth = require('../controllers/authentication')
 
 // programs
 router
     .route('/programs')
     .get(ctrlProgram.programList)
-    .post(ctrlProgram.programCreateOne);
+    .post(auth, ctrlProgram.programCreateOne);
 
 router
     .route('/program/:programid')
     .get(ctrlProgram.programReadOne)
-    .put(ctrlProgram.programUpdateOne)
-    .delete(ctrlProgram.programDeleteOne);
+    .put(auth, ctrlProgram.programUpdateOne)
+    .delete(auth, ctrlProgram.programDeleteOne);
 
 // Courses
 router
     .route('/program/:programid/courses')
     .get(ctrlCourse.courseList)
-    .post(ctrlCourse.courseCreateOne);
+    .post(auth, ctrlCourse.courseCreateOne);
 
 router
     .route('/program/:programid/course/:courseid')
     .get(ctrlCourse.courseReadOne)
-    .put(ctrlCourse.courseUpateOne)
-    .delete(ctrlCourse.courseDeleteOne);
+    .put(auth, ctrlCourse.courseUpateOne)
+    .delete(auth, ctrlCourse.courseDeleteOne);
 
 // Materials
 router
     .route('/program/:programid/course/:courseid/materials')
     .get(ctrlCourse.materialList)
-    .post(ctrlCourse.materialCreateOne);
+    .post(auth, ctrlCourse.materialCreateOne);
 
 router
     .route('/program/:programid/course/:courseid/material/:materialid')
     .get(ctrlCourse.materialReadOne)
-    .put(ctrlCourse.materialUpdateOne)
-    .delete(ctrlCourse.materialDeleteOne);
+    .put(auth, ctrlCourse.materialUpdateOne)
+    .delete(auth, ctrlCourse.materialDeleteOne);
 
 // Instructors
 router
     .route('/instructors')
     .get(ctrlInstructor.instructorList)
-    .post(ctrlInstructor.instructorCreateOne);
+    .post(auth, ctrlInstructor.instructorCreateOne);
 
 router
     .route('/instructor/:instructorid')
     .get(ctrlInstructor.instructorReadOne)
-    .put(ctrlInstructor.instructorUpdateOne)
-    .delete(ctrlInstructor.instructorDeleteOne);
+    .put(auth, ctrlInstructor.instructorUpdateOne)
+    .delete(auth, ctrlInstructor.instructorDeleteOne);
 
 // Institutions
 router
     .route('/institutions')
     .get(ctrlInstitution.institutionList)
-    .post(ctrlInstitution.institutionCreateOne);
+    .post(auth, ctrlInstitution.institutionCreateOne);
 
 router
     .route('/institution/:institutionid')
     .get(ctrlInstitution.institutionReadOne)
-    .put(ctrlInstitution.institutionUpdateOne)
-    .delete(ctrlInstitution.institutionDeleteOne);
+    .put(auth, ctrlInstitution.institutionUpdateOne)
+    .delete(auth, ctrlInstitution.institutionDeleteOne);
+
+
+// authentication
+router.post('/login', ctrlAuth.login);
+router.post('/signUp', ctrlAuth.signUp);
 
 module.exports = router;
