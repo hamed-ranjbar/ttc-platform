@@ -6,14 +6,9 @@
             <div class="row">
                 <mat-form-field appearance="outline" color="accent">
                     <mat-label>Email address</mat-label>
-                    <input required type="email" required matInput formControlName="email"
-                        placeholder="username@service.com" [(ngModel)]="credentials.email">
-                    <mat-error
-                        *ngIf="signupGroupFormControl.controls.email.hasError('email') && !signupGroupFormControl.controls.email.hasError('required')">
-                        Please enter a valid email address!</mat-error>
-                    <mat-error *ngIf="signupGroupFormControl.controls.email.hasError('required')">Email is
-                        <b>REQUIRED</b>!
-                    </mat-error>
+                    <input required type="email" required matInput formControlName="email" placeholder="username@service.com" [(ngModel)]="credentials.email">
+                    <mat-error *ngIf="signupGroupFormControl.controls.email.hasError('email') && !signupGroupFormControl.controls.email.hasError('required')">Please enter a <b>valid</b> email address!</mat-error>
+                    <mat-error *ngIf="signupGroupFormControl.controls.email.hasError('required')">Email is <b>REQUIRED</b>!</mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -21,15 +16,10 @@
             <div class="row">
                 <mat-form-field appearance="outline" color="accent">
                     <mat-label>Password</mat-label>
-                    <input required [type]="hidePassword ? 'password' : 'text'" required matInput
-                        formControlName="password" placeholder="123abc!@#" [(ngModel)]="credentials.password" minlength="8">
-                    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' :
-                        'visibility'}}</mat-icon>
-                    <mat-error
-                        *ngIf="signupGroupFormControl.controls.password.hasError('minlength') && !signupGroupFormControl.controls.password.hasError('required')">
-                        Minimum lenth for password is 8 characters</mat-error>
-                    <mat-error *ngIf="signupGroupFormControl.controls.password.hasError('required')">Email is
-                        <b>REQUIRED</b>!
+                    <input required [type]="hidePassword ? 'password' : 'text'" required matInput formControlName="password" placeholder="123abc!@#" [(ngModel)]="credentials.password" minlength="8">
+                    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="signupGroupFormControl.controls.password.hasError('minlength') && !signupGroupFormControl.controls.password.hasError('required')">Minimum lenth for password is <b>8 characters</b></mat-error>
+                    <mat-error *ngIf="signupGroupFormControl.controls.password.hasError('required')">Password is <b>REQUIRED</b>!
                     </mat-error>
                 </mat-form-field>
             </div>

@@ -4,13 +4,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Institution, Lecturer, Program } from './program';
 import { AuthResponse } from './authresponse';
 import { User } from './user';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class MoocDataService {
-  private apiBaseUrl = (process.env.NODE_ENV == 'production') ? 'http://ttc-moghadam.herokuapp.com/api' : 'http://localhost:3000/api'
+  private apiBaseUrl = (environment.production) ? 'http://ttc-moghadam.herokuapp.com/api' : 'http://localhost:3000/api'
 
   public getProgram(): Promise<Program[]> {
     const url = `${this.apiBaseUrl}/programs`
