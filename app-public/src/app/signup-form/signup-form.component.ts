@@ -39,6 +39,10 @@ export class SignupFormComponent implements OnInit {
   })
 
   public onRegisterSubmit() {
+    if (!this.credentials.email || !this.credentials.password){
+      this.formErrors = 'Fill all the required fields';
+      return;
+    }
     this.credentials.email = this.credentials.email.toLowerCase();
     this.authenticationService.signup(this.credentials)
       .then(() => this.router.navigateByUrl('/'))

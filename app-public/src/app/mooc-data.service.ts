@@ -10,17 +10,17 @@ import { User } from './user';
 })
 
 export class MoocDataService {
-  private apiBaseUrl = (process.env.NODE_ENV == 'production')?'http://ttc-moghadam.herokuapp.com/api':'http://localhost:3000/api'
-  
+  private apiBaseUrl = (process.env.NODE_ENV == 'production') ? 'http://ttc-moghadam.herokuapp.com/api' : 'http://localhost:3000/api'
+
   public getProgram(): Promise<Program[]> {
     const url = `${this.apiBaseUrl}/programs`
     return this.http
-        .get(url)
-        .toPromise()
-        .then(response => response as Program[])
-        .catch(this.handleError);
+      .get(url)
+      .toPromise()
+      .then(response => response as Program[])
+      .catch(this.handleError);
   }
-  
+
   public getProgramById(programId: string): Promise<Program> {
     const url = `${this.apiBaseUrl}/program/${programId}`
     return this.http
@@ -29,8 +29,8 @@ export class MoocDataService {
       .then(response => response as Program)
       .catch(this.handleError);
   }
-  
-  public getLecturerById(lecturerId: string):Promise<Lecturer> {
+
+  public getLecturerById(lecturerId: string): Promise<Lecturer> {
     const url = `${this.apiBaseUrl}/instructor/${lecturerId}`
     return this.http
       .get(url)
@@ -38,8 +38,8 @@ export class MoocDataService {
       .then(response => response as Lecturer)
       .catch(this.handleError)
   }
-  
-  public getInstitutionById(institutionId: string):Promise<Institution> {
+
+  public getInstitutionById(institutionId: string): Promise<Institution> {
     const url = `${this.apiBaseUrl}/institution/${institutionId}`
     return this.http
       .get(url)
@@ -48,18 +48,18 @@ export class MoocDataService {
       .catch(this.handleError)
   }
 
-  public login(user:User):Promise<AuthResponse> {
-    return this.makeAuthApiCall('/login',user);
+  public login(user: User): Promise<AuthResponse> {
+    return this.makeAuthApiCall('/login', user);
   }
 
-  public signup(user:User):Promise<AuthResponse> {
-    return this.makeAuthApiCall('/signup',user);
+  public signup(user: User): Promise<AuthResponse> {
+    return this.makeAuthApiCall('/signup', user);
   }
 
-  private makeAuthApiCall(urlPath:string,user:User):Promise<AuthResponse> {
-    const url:string = `${this.apiBaseUrl}${urlPath}`;
+  private makeAuthApiCall(urlPath: string, user: User): Promise<AuthResponse> {
+    const url: string = `${this.apiBaseUrl}${urlPath}`;
     return this.http
-      .post(url,user)
+      .post(url, user)
       .toPromise()
       .then(response => response as AuthResponse)
       .catch(this.handleError)
