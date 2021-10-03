@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 import { MustMatch } from '../_helpers/must-match.validator';
 
 @Component({
@@ -9,7 +11,18 @@ import { MustMatch } from '../_helpers/must-match.validator';
 })
 export class SignupFormComponent implements OnInit {
 
-  constructor() { }
+  public hidePassword: boolean = true
+  public credentials = {
+    name: '',
+    email: '',
+    password: ''
+  }
+  public formErrors: string = '';
+
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -24,4 +37,11 @@ export class SignupFormComponent implements OnInit {
       Validators.minLength(8)
     ])
   })
+
+  public onRegisterSubmit() {
+    this.credentials.email = this.credentials.email.toLowerCase();
+    this.authenticationService.signup(this.credentials)
+      .then(() => this.router.navigateByUrl('/'))
+      .catch((message) => this.formErrors = message)
+  }
 }

@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const dbServer = (process.env.state == 'production') ? `mongodb+srv://${process.env.db_username}:${process.env.db_password}@ttc-cluster.lomgx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority` : 'mongodb://localhost:27017/ttc-platform';
+const dbServer = (process.env.NOED_ENV == 'production') ? process.end.MONGODB_URL : 'mongodb://localhost:27017/ttc-platform';
 
 console.log(`connecting to ${dbServer}`);
 mongoose.connect(dbServer, {
   useNewUrlParser: true,
+  useCreateIndex: true,
   useUnifiedTopology: true
-});
+},1000);
 
 const db = mongoose.connection;
 process.on('error', console.error.bind(console, 'connection error:'));

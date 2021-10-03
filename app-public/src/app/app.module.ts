@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
 // Components
 import { HomeListComponent } from './home-list/home-list.component';
 import { FrameworkComponent } from './framework/framework.component';
@@ -75,7 +76,8 @@ import { LoginComponent } from './login/login.component'
     MatRippleModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatIconModule
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [FrameworkComponent]

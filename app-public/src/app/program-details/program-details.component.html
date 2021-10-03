@@ -1,21 +1,34 @@
 <div class="row">
     <div class="container">
-        <img src="{{program.image_link}}" alt="{{program.name}} image" class="fit">
-        <div class="left whiteshadow rightangle">
-            <div class="row">
-                <img src="" alt="">
-                <img src="" alt="">
+
+        <div class="col-6-md col-12">
+            <div class="left whiteshadow rightangle">
+                <div class="row">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                </div>
+                <a role="button" class="btn btn-warning" href="/program/programid/sign_up">sign up</a>
             </div>
-            <a role="button" class="btn btn-warning" href="/program/programid/sign_up">sign up</a>
         </div>
+
+        <div class="col-6-md col-12">
+            <div class="row">
+                <img src="{{program.image_link}}" alt="{{program.name}} image" class="screen-wide">
+            </div>
+        </div>
+
+
     </div>
 </div>
+
 <div class="row">
     <div class="content">
         <mat-tab-group dynamicHeight color="accent">
+
             <mat-tab label="course content">
                 <app-content-list [program]="program"></app-content-list>
             </mat-tab>
+
             <mat-tab label="Created by">
                 <div class="row">
                     <div class="col-md-2 col-12">
@@ -26,6 +39,7 @@
                     </div>
                 </div>
             </mat-tab>
+
             <mat-tab label="Hosted by">
                 <div class="row">
                     <div class="col-md-2 col-12">
@@ -34,8 +48,11 @@
                     <div class="col-md-10 col-12" [innerHTML]="institution.description | htmlFormatter"></div>
                 </div>
             </mat-tab>
+
         </mat-tab-group>
     </div>
 </div>
+
 <app-customers-review></app-customers-review>
+
 <app-pricing></app-pricing>

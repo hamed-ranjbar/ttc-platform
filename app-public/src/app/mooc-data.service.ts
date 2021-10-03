@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Institution, Lecturer, Program } from './program';
+import { AuthResponse } from './authresponse';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,23 @@ export class MoocDataService {
       .get(url)
       .toPromise()
       .then(response => response as Institution)
+      .catch(this.handleError)
+  }
+
+  public login(user:User):Promise<AuthResponse> {
+    return this.makeAuthApiCall('/login',user);
+  }
+
+  public signup(user:User):Promise<AuthResponse> {
+    return this.makeAuthApiCall('/signup',user);
+  }
+
+  private makeAuthApiCall(urlPath:string,user:User):Promise<AuthResponse> {
+    const url:string = `${this.apiBaseUrl}${urlPath}`;
+    return this.http
+      .post(url,user)
+      .toPromise()
+      .then(response => response as AuthResponse)
       .catch(this.handleError)
   }
 

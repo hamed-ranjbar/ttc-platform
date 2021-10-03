@@ -126,13 +126,13 @@ hr {
 }
 
 .rightangle {
-
+  top: 50%;
+  left: 20px;
   position: absolute;
-  -webkit-transform: skewX(-10deg);
-  -moz-transform: skewX(-10deg);
-  -ms-transform: skewX(-10deg);
-  transform: skewX(-10deg);
+  -webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
 }
+
 .mat-step-header .mat-step-icon {
   background-color: #e5bf1c!;
 }
@@ -140,4 +140,12 @@ hr {
 .stepper .mat-step-label.mat-step-label{
   text-overflow: ellipsis;
   white-space: normal;
+}
+
+.float-right{
+  float: right;
+}
+
+.screen-wide{
+  width: 100%;
 }
