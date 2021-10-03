@@ -10,7 +10,7 @@ import { User } from './user';
 })
 
 export class MoocDataService {
-  private apiBaseUrl = 'http://localhost:3000/api'
+  private apiBaseUrl = (process.env.NODE_ENV == 'production')?'http://ttc-moghadam.herokuapp.com/api':'http://localhost:3000/api'
   
   public getProgram(): Promise<Program[]> {
     const url = `${this.apiBaseUrl}/programs`
