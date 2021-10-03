@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dbServer = (process.env.NOED_ENV == 'production') ? process.env.MONGODB_URL : 'mongodb://localhost:27017/ttc-platform';
+const dbServer = (process.env.NODE_ENV == 'production') ? process.env.MONGODB_URL : 'mongodb://localhost:27017/ttc-platform';
 
 console.log(`connecting to ${dbServer}`);
 mongoose.connect(dbServer, {
