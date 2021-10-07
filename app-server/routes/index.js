@@ -1,9 +1,9 @@
-const express = require('express')
-const router = express.Router()
-const ctrlProgram = require('../controllers/programList')
+const express = require('express');
+const router = express.Router();
+const ctrlStream = require('../controllers/stream');
+const ctrlEmail = require('../controllers/email')
 
-/* GET home page. */
-router.get('/', ctrlProgram.programList);
-//router.get('/:programid', ctrlProgram.programInfo);
-router.get('/stream', ctrlProgram.streamVideo);
+router.get('/stream', ctrlStream.streamVideo);
+router.get('/email', ctrlEmail.sendMail);
+
 module.exports = router;

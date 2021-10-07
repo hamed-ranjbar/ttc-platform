@@ -6,8 +6,9 @@ import { HomepageComponent } from '../homepage/homepage.component';
 import { AboutComponent } from '../about/about.component';
 import { ProgramDetailPageComponent } from '../program-detail-page/program-detail-page.component';
 import { CoursePageComponent } from '../course-page/course-page.component';
-import { SignupPageComponent } from '../signup-page/signup-page.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
+import { LoginComponent } from '../login/login.component';
+import { SignupFormComponent } from '../signup-form/signup-form.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,7 +24,10 @@ const routes: Routes = [{
   component: CoursePageComponent
 }, {
   path: 'signup',
-  component: SignupPageComponent
+  component: SignupFormComponent
+},{
+  path: 'login',
+  component: LoginComponent
 },{
   path: '**',
   component:NotFoundComponent

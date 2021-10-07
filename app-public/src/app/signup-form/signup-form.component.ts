@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { HistoryService } from '../history.service';
 import { MustMatch } from '../_helpers/must-match.validator';
 
 @Component({
@@ -11,6 +12,12 @@ import { MustMatch } from '../_helpers/must-match.validator';
 })
 export class SignupFormComponent implements OnInit {
 
+  public pageContent = {
+    header: {
+      title: 'Sign Up',
+      strapline: 'The begening of your adventure!'
+    }
+  }
   public hidePassword: boolean = true
   public credentials = {
     name: '',
@@ -21,7 +28,8 @@ export class SignupFormComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router:Router
+    private router: Router,
+    private historyService: HistoryService
   ) { }
 
   ngOnInit(): void {
@@ -39,13 +47,13 @@ export class SignupFormComponent implements OnInit {
   })
 
   public onRegisterSubmit() {
-    if (!this.credentials.email || !this.credentials.password){
+    if (!this.credentials.email || !this.credentials.password) {
       this.formErrors = 'Fill all the required fields';
       return;
     }
     this.credentials.email = this.credentials.email.toLowerCase();
     this.authenticationService.signup(this.credentials)
-      .then(() => this.router.navigateByUrl('/'))
+      .then(() => this.router.navigateByUrl(this.historyService.getPreviousUrl()))
       .catch((message) => this.formErrors = message)
   }
 }

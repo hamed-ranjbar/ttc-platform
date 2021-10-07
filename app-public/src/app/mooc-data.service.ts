@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Institution, Lecturer, Program } from './program';
 import { AuthResponse } from './authresponse';
 import { User } from './user';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
+import { BROWSER_STORAGE } from './storage';
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +71,8 @@ export class MoocDataService {
     console.error('something has gone wrong!', error);
     return Promise.reject(error.message || error);
   }
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(BROWSER_STORAGE) private storage: Storage
+  ) { }
 }

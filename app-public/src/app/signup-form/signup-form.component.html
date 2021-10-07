@@ -1,4 +1,5 @@
-<h1>Already a member? Please <a routerlink="/login">log in</a> instead</h1>
+<app-page-header [content]="pageContent.header"></app-page-header>
+<h3>Already a member? Please <b><a routerLink="/login">log in</a></b> instead</h3>
 <form (submit)="onRegisterSubmit()" [formGroup]="signupGroupFormControl">
     <div class="row">
         <div role="alert" *ngIf="formErrors" class="alert alert-danger">{{formErrors}}</div>

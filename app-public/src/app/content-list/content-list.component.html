@@ -2,8 +2,8 @@
     <mat-step state="edit" [completed]="true" *ngFor="let course of program.courses"
         label="Course {{course.number}}: {{course.name}}">
         <mat-vertical-stepper color="accent">
-            <mat-step state="edit" [completed]="true" *ngFor="let material of course.materials"
-                label="Part{{material.number}}: {{material.name}}"></mat-step>
+            <mat-step state="edit" [completed]="true" *ngFor="let chapter of course.chapters"
+                label="Part{{chapter.number}}: {{chapter.name}}"></mat-step>
 
             <ng-template matStepperIcon="edit" let-index="index">
                 {{index +1}}

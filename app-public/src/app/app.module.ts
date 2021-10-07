@@ -28,7 +28,6 @@ import { ProgramDetailPageComponent } from './program-detail-page/program-detail
 import { PricingComponent } from './pricing/pricing.component';
 import { CustomersReviewComponent } from './customers-review/customers-review.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
-import { SignupPageComponent } from './signup-page/signup-page.component';
 // Pipes
 import { HtmlFormatterPipe } from './html-formatter.pipe';
 import { CoursePageComponent } from './course-page/course-page.component';
@@ -53,7 +52,6 @@ import { LoginComponent } from './login/login.component'
     PricingComponent,
     CustomersReviewComponent,
     SignupFormComponent,
-    SignupPageComponent,
     HtmlFormatterPipe,
     CoursePageComponent,
     CourseDetailsComponent,

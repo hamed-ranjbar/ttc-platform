@@ -1,1 +1,30 @@
-<p>login works!</p>
+<app-page-header [content]="pageContent.header"></app-page-header>
+<h3>Not a member? Please <b><a routerLink="/signup">Sign Up</a></b> instead</h3>
+<form (submit)="onLoginSubmit()" [formGroup]="loginGroupFormControl">
+    <div class="row">
+        <div role="alert" *ngIf="formErrors" class="alert alert-danger">{{formErrors}}</div>
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Email address</mat-label>
+                    <input required type="email" required matInput formControlName="email" placeholder="username@service.com" [(ngModel)]="credentials.email">
+                    <mat-error *ngIf="loginGroupFormControl.controls.email.hasError('email') && !loginGroupFormControl.controls.email.hasError('required')">Please enter a <b>valid</b> email address!</mat-error>
+                    <mat-error *ngIf="loginGroupFormControl.controls.email.hasError('required')">Email is <b>REQUIRED</b>!</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="row">
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Password</mat-label>
+                    <input required [type]="hidePassword ? 'password' : 'text'" required matInput formControlName="password" placeholder="123abc!@#" [(ngModel)]="credentials.password" minlength="8">
+                    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="loginGroupFormControl.controls.password.hasError('minlength') && !loginGroupFormControl.controls.password.hasError('required')">Minimum lenth for password is <b>8 characters</b></mat-error>
+                    <mat-error *ngIf="loginGroupFormControl.controls.password.hasError('required')">Password is <b>REQUIRED</b>!
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <button type="submit" role="button" class="btn btn-primary">Login</button>
+</form>

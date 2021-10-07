@@ -1,13 +1,6 @@
 const mongoose = require('mongoose');
+const { chapterSchema } = require('./Chapters');
 
-const materialSchema = new mongoose.Schema({
-    name:String,
-    number: Number,
-    Type: String,
-    link: String,
-    mandatory: Boolean,
-    max_point: Number
-});
 const courseSchema = new mongoose.Schema({
     name: String,
     commitment: Number,
@@ -18,7 +11,7 @@ const courseSchema = new mongoose.Schema({
         type: Boolean,
         'default': false
     },
-    materials: [materialSchema]
+    chapters: [chapterSchema]
 });
 
 courseSchema.index({ number: 1 })

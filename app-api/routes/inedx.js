@@ -9,9 +9,11 @@ const auth = jwt({
 
 const ctrlProgram = require('../controllers/Program');
 const ctrlCourse = require('../controllers/Course');
+const ctrlChapter = require('../controllers/Chapter');
+const ctrlMaterial = require('../controllers/Materials');
 const ctrlInstructor = require('../controllers/Instructor');
 const ctrlInstitution = require('../controllers/Institution');
-const ctrlAuth = require('../controllers/authentication')
+const ctrlAuth = require('../controllers/authentication');
 
 // programs
 router
@@ -33,21 +35,33 @@ router
 
 router
     .route('/program/:programid/course/:courseid')
-    .get(ctrlCourse.courseReadOne)
+    .get(auth, ctrlCourse.courseReadOne)
     .put(auth, ctrlCourse.courseUpateOne)
     .delete(auth, ctrlCourse.courseDeleteOne);
 
-// Materials
+// Chapters
 router
-    .route('/program/:programid/course/:courseid/materials')
-    .get(ctrlCourse.materialList)
-    .post(auth, ctrlCourse.materialCreateOne);
+    .route('/program/:programid/course/:courseid/chapters')
+    .get(ctrlChapter.chapterList)
+    .post(auth, ctrlChapter.chapterCreateOne);
 
 router
-    .route('/program/:programid/course/:courseid/material/:materialid')
-    .get(ctrlCourse.materialReadOne)
-    .put(auth, ctrlCourse.materialUpdateOne)
-    .delete(auth, ctrlCourse.materialDeleteOne);
+    .route('/program/:programid/course/:courseid/chapter/:chapterid')
+    .get(auth, ctrlChapter.chapterReadOne)
+    .put(auth, ctrlChapter.chapterUpdateOne)
+    .delete(auth, ctrlChapter.chapterDeleteOne);
+
+// Materials
+router
+    .route('/program/:programid/course/:courseid/chapter/:chapterid/materials')
+    .get(auth, ctrlMaterial.materialList)
+    .post(auth, ctrlMaterial.materialCreateOne);
+
+router
+    .route('/program/:programid/course/:courseid/chapter/:chapterid/material/:materialid')
+    .get(auth, ctrlMaterial.materialReadOne)
+    .put(auth, ctrlMaterial.materialUpdateOne)
+    .delete(auth, ctrlMaterial.materialDeleteOne);
 
 // Instructors
 router

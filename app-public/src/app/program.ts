@@ -1,16 +1,24 @@
 class material {
   name: string = '';
   number: number = 0;
-  link: string = '';
+  vid_link: string = '';
+  text: string = '';
   mandatory: boolean = false;
   max_point: number = 0;
+}
+
+class chapter {
+  name: string = '';
+  number: number = 0;
+  description: string = '';
+  materials: material[] = [];
 }
 
 class course {
   _id: string = '';
   name: string = '';
   number: number = 0;
-  materials!: material[];
+  chapters: chapter[] = [];
 }
 
 export class Program {
